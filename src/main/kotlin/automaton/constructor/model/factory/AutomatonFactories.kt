@@ -4,6 +4,7 @@ fun getAllAutomatonFactories() = listOf<AutomatonFactory>(
     FiniteAutomatonFactory(),
     PushdownAutomatonFactory(),
     RegisterAutomatonFactory(),
+    RecursiveAutomatonFactory(),
     MealyMooreMachineFactory(),
     TuringMachineFactory(),
     MultiTrackTuringMachineFactory(),
