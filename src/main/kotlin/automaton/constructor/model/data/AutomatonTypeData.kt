@@ -68,6 +68,21 @@ data class RegisterAutomatonData(
 }
 
 /**
+ * The data of a [recursive automaton][RecursiveAutomaton] with an [input tape][inputTape].
+ */
+@MostlyGeneratedOrInline
+@Serializable
+@SerialName("recursive-automaton")
+data class RecursiveAutomatonData(
+    val inputTape: InputTapeDescriptorData
+) : AutomatonTypeData {
+    override fun createEmptyAutomaton() = RecursiveAutomaton (
+        inputTape = inputTape.createDescriptor()
+    )
+}
+
+
+/**
  * The data of a [Mealy/Moore machine][MealyMooreMachine] with an [input tape][inputTape] and a [Mealy/Moore output tape][outputTape].
  */
 @MostlyGeneratedOrInline
@@ -162,6 +177,7 @@ val AutomatonTypeData.Companion.serializersModule
             subclass(FiniteAutomatonData::class)
             subclass(PushdownAutomatonData::class)
             subclass(RegisterAutomatonData::class)
+            subclass(RecursiveAutomatonData::class)
             subclass(MealyMooreMachineData::class)
             subclass(TuringMachineData::class)
             subclass(MultiTrackTuringMachineData::class)
