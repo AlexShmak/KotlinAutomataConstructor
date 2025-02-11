@@ -35,6 +35,18 @@ data class FiniteAutomatonData(
     )
 }
 
+@MostlyGeneratedOrInline
+@Serializable
+@SerialName("recursive-automaton")
+data class RecursiveAutomatonData(
+    val inputTape: InputTapeDescriptorData
+) : AutomatonTypeData {
+    override fun createEmptyAutomaton() = FiniteAutomaton(
+        inputTape = inputTape.createDescriptor()
+    )
+}
+
+
 /**
  * The data of a [pushdown automaton][PushdownAutomaton] with an [input tape][inputTape] and several [stacks].
  */
